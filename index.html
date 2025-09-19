@@ -4,10 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Happy Birthday Aarthi 🎉🎈🎂</title>
-
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
-
   body {
     margin: 0;
     background: linear-gradient(135deg, #ff9a9e, #fad0c4);
@@ -90,26 +88,6 @@
   #slideshow img.active {
     display: block;
   }
-  #controls {
-    text-align: center;
-    margin-bottom: 30px;
-    position: relative;
-    z-index: 2;
-  }
-  button.controlBtn {
-    background: #ff86a1;
-    border: none;
-    color: white;
-    padding: 12px 26px;
-    font-size: 1rem;
-    border-radius: 30px;
-    cursor: pointer;
-    margin: 0 10px;
-    transition: background 0.3s ease;
-  }
-  button.controlBtn:hover {
-    background: #ff5691;
-  }
   #confetti-canvas {
     position: fixed;
     top: 0;
@@ -119,7 +97,6 @@
     pointer-events: none;
     z-index: 0; /* behind everything */
   }
-
   /* Balloon styles */
   .balloon {
     position: fixed;
@@ -143,14 +120,12 @@
     transform: translateX(-50%);
     border-radius: 2px;
   }
-
   /* Different balloon colors */
   .balloon.color1 { background-color: #ff477e; }
   .balloon.color2 { background-color: #ff85a1; }
   .balloon.color3 { background-color: #ffafcc; }
   .balloon.color4 { background-color: #f9bec7; }
   .balloon.color5 { background-color: #ff0a54; }
-
   /* Balloon floating animations */
   @keyframes floatUp {
     0% {
@@ -162,7 +137,6 @@
       opacity: 0;
     }
   }
-
   /* Mobile styles */
   @media only screen and (max-width: 600px) {
     h1 {
@@ -193,22 +167,12 @@
     #slideshow img {
       border-radius: 12px;
     }
-    button.controlBtn {
-      padding: 10px 22px;
-      font-size: 0.9rem;
-      margin: 0 6px;
-    }
-    #controls {
-      margin-bottom: 25px;
-    }
   }
 </style>
 </head>
 <body>
-
 <!-- Confetti Blast Background Canvas -->
 <canvas id="confetti-canvas"></canvas>
-
 <!-- Balloons -->
 <div class="balloon color1" style="left: 5%; animation: floatUp 8s infinite;"></div>
 <div class="balloon color2" style="left: 15%; animation: floatUp 10s 2s infinite;"></div>
@@ -216,11 +180,8 @@
 <div class="balloon color4" style="left: 40%; animation: floatUp 9s 0.5s infinite;"></div>
 <div class="balloon color5" style="left: 60%; animation: floatUp 11s 1.5s infinite;"></div>
 <div class="balloon color1" style="left: 75%; animation: floatUp 8s 3s infinite;"></div>
-
 <h1>🎉 Happy Birthday, Aarthi! 🎂</h1>
-
 <img src="assets/cake.png" alt="Cake" class="cake" />
-
 <button id="greetingBtn">Em Chusthunav Click Chey 😅</button>
 <div id="greetingMsg">
   <p>
@@ -232,16 +193,8 @@
     I Wish You All The Happiness In The World And May All Your Dreams Come True❤️🫂
   </p>
 </div>
-
 <div id="slideshow"></div>
-
-<div id="controls">
-  <button class="controlBtn" id="prev-btn">⬅️ Prev</button>
-  <button class="controlBtn" id="next-btn">Next ➡️</button>
-</div>
-
 <audio id="bg-music" src="assets/song.mp3" autoplay loop></audio>
-
 <script>
 // Toggle greeting message
 const greetBtn = document.getElementById('greetingBtn');
@@ -255,7 +208,6 @@ greetBtn.addEventListener('click', () => {
     greetBtn.textContent = 'Em Chusthunav Click Chey 😅';
   }
 });
-
 // Photos slideshow
 const photos = [
   'assets/photos/photo1.jpg',
@@ -269,10 +221,8 @@ const photos = [
   'assets/photos/photo10.jpg',
   'assets/photos/photo11.jpg',
 ];
-
 const slideshow = document.getElementById('slideshow');
 let currentPhotoIdx = 0;
-
 // Load photos into slideshow container
 photos.forEach( (src, i) => {
   const img = document.createElement('img');
@@ -280,25 +230,15 @@ photos.forEach( (src, i) => {
   if(i === 0) img.classList.add('active');
   slideshow.appendChild(img);
 });
-
 const images = slideshow.getElementsByTagName('img');
 const totalImages = images.length;
-
 function showPhoto(index) {
   for(let img of images) {
     img.classList.remove('active');
   }
   images[index].classList.add('active');
 }
-
-document.getElementById('prev-btn').addEventListener('click', () => {
-  currentPhotoIdx = (currentPhotoIdx - 1 + totalImages) % totalImages;
-  showPhoto(currentPhotoIdx);
-});
-document.getElementById('next-btn').addEventListener('click', () => {
-  currentPhotoIdx = (currentPhotoIdx + 1) % totalImages;
-  showPhoto(currentPhotoIdx);
-});
+// Removed prev/next button event listeners to hide controls
 
 // Auto advance slideshow every 3 seconds
 setInterval(() => {
@@ -307,12 +247,10 @@ setInterval(() => {
     showPhoto(currentPhotoIdx);
   }
 }, 3000);
-
 // Confetti blast background
 const confettiCanvas = document.getElementById('confetti-canvas');
 confettiCanvas.width = window.innerWidth;
 confettiCanvas.height = window.innerHeight;
-
 function launchConfetti() {
   const script = document.createElement('script');
   script.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js";
@@ -332,11 +270,9 @@ function launchConfetti() {
   document.body.appendChild(script);
 }
 launchConfetti();
-
 // Background music volume softened
 const bgMusic = document.getElementById('bg-music');
 bgMusic.volume = 0.3;
 </script>
-
 </body>
 </html>
