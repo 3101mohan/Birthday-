@@ -14,6 +14,59 @@
     position: relative;
     min-height: 100vh;
   }
+  /* Birthday themed background decorations */
+  .star, .gift, .party-hat {
+    position: absolute;
+    z-index: 0;
+    opacity: 0.82;
+    pointer-events: none;
+    animation-timing-function: linear;
+  }
+  .star {
+    width: 38px;
+    height: 38px;
+    background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/2b50.png') no-repeat center/contain;
+    animation: twinkle 4s infinite;
+  }
+  .star.s1 { left: 4vw; top: 12vh; animation-delay: 0s;}
+  .star.s2 { right: 12vw; top: 6vh; animation-delay: 1s;}
+  .star.s3 { left: 50vw; top: 1vh; animation-delay: 2.2s;}
+  .star.s4 { right: 6vw; top: 20vh; animation-delay: 1.4s;}
+  .star.s5 { left: 3vw; bottom: 10vh; animation-delay: 2.8s;}
+  .star.s6 { right: 18vw; bottom: 7vh; animation-delay: 0.3s;}
+  @keyframes twinkle {
+    0%,100% { opacity: 0.68;}
+    50% { opacity: 1;}
+  }
+  .gift {
+    width: 50px;
+    height: 50px;
+    background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f381.png') no-repeat center/contain;
+    animation: floatGift 13s infinite alternate;
+  }
+  .gift.g1 { left: 6vw; bottom: 5vh;}
+  .gift.g2 { right: 9vw; bottom: 15vh; animation-delay: 2s;}
+  .gift.g3 { left: 25vw; top: 27vh; animation-delay: 5s;}
+  .gift.g4 { right: 44vw; top: 30vh; animation-delay: 4.5s;}
+  @keyframes floatGift {
+    0% {transform: translateY(0px) rotate(-7deg);}
+    50% {transform: translateY(-40px) rotate(7deg);}
+    100% {transform: translateY(0px) rotate(-7deg);}
+  }
+  .party-hat {
+    width: 48px;
+    height: 48px;
+    background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f389.png') no-repeat center/contain;
+    opacity: 0.88;
+    animation: bounceHat 4s infinite;
+  }
+  .party-hat.h1 { left: 10vw; top: 63vh; animation-delay: 1s;}
+  .party-hat.h2 { right: 14vw; top: 69vh; animation-delay: 0.5s;}
+  @keyframes bounceHat {
+    0%,100% {transform: translateY(0);}
+    50% {transform: translateY(-15px);}
+  }
+
   h1 {
     color: white;
     text-align: center;
@@ -171,6 +224,13 @@
 </style>
 </head>
 <body>
+<!-- Birthday background graphics -->
+<div class="star s1"></div><div class="star s2"></div>
+<div class="star s3"></div><div class="star s4"></div>
+<div class="star s5"></div><div class="star s6"></div>
+<div class="gift g1"></div><div class="gift g2"></div>
+<div class="gift g3"></div><div class="gift g4"></div>
+<div class="party-hat h1"></div><div class="party-hat h2"></div>
 <!-- Confetti Blast Background Canvas -->
 <canvas id="confetti-canvas"></canvas>
 <!-- Balloons -->
@@ -238,8 +298,7 @@ function showPhoto(index) {
   }
   images[index].classList.add('active');
 }
-// Removed prev/next button event listeners to hide controls
-
+// No prev/next button event listeners
 // Auto advance slideshow every 3 seconds
 setInterval(() => {
   if(totalImages > 0) {
