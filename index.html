@@ -15,7 +15,7 @@
     min-height: 100vh;
   }
   /* Birthday themed background decorations */
-  .star, .gift, .party-hat {
+  .star, .gift, .party-hat, .candle, .popper {
     position: absolute;
     z-index: 0;
     opacity: 0.82;
@@ -65,6 +65,33 @@
   @keyframes bounceHat {
     0%,100% {transform: translateY(0);}
     50% {transform: translateY(-15px);}
+  }
+  /* New candle emoji */
+  .candle {
+    width: 36px;
+    height: 36px;
+    background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f56f.png') no-repeat center/contain;
+    animation: floatCandle 12s infinite alternate;
+  }
+  .candle.c1 { left: 30vw; top: 12vh; animation-delay: 0s;}
+  .candle.c2 { right: 22vw; top: 15vh; animation-delay: 3s;}
+  @keyframes floatCandle {
+    0% {transform: translateY(0px) rotate(3deg);}
+    50% {transform: translateY(-35px) rotate(-3deg);}
+    100% {transform: translateY(0px) rotate(3deg);}
+  }
+  /* New party popper emoji */
+  .popper {
+    width: 40px;
+    height: 40px;
+    background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f389.png') no-repeat center/contain;
+    animation: bouncePopper 4s infinite;
+  }
+  .popper.p1 { left: 18vw; top: 40vh; animation-delay: 1s;}
+  .popper.p2 { right: 30vw; top: 38vh; animation-delay: 1.5s;}
+  @keyframes bouncePopper {
+    0%,100% {transform: translateY(0);}
+    50% {transform: translateY(-12px);}
   }
   h1 {
     color: white;
@@ -228,6 +255,9 @@
 <div class="gift g1"></div><div class="gift g2"></div>
 <div class="gift g3"></div><div class="gift g4"></div>
 <div class="party-hat h1"></div><div class="party-hat h2"></div>
+<div class="candle c1"></div><div class="candle c2"></div>
+<div class="popper p1"></div><div class="popper p2"></div>
+
 <!-- Confetti Blast Background Canvas -->
 <canvas id="confetti-canvas"></canvas>
 <!-- Balloons -->
@@ -249,15 +279,14 @@
 <script>
 // Wishes section data and logic
 const wishes = [
-  'Click Chey Ante Click Chesthava 🤣 <br>
+  `Click Chey Ante Click Chesthava 🤣 <br>
 Next Click Chai… Neku Okati Chepali 👉👈😅 <br>
 Nuvu Na Life lo Most Favorite and Important Person 🥰 <br>
 Apudu Ela Happy ga Life ni Enjoy Cheyali 🤩 <br>
 Apudu A Help Kavali Anna Nenu Okadni Unna Ani Gurtu Pettuko 😁 <br>
 Love You A Lot ❤️🫂 <br>
-Happy Birthday Ra Kothi ❤️🥳
-I Wish You All The Happiness in the World and May All Your Dreams Come True ❤
-'
+Happy Birthday Ra Kothi ❤️🥳<br>
+I Wish You All The Happiness in the World and May All Your Dreams Come True ❤`
 ];
 let currentWishIdx = 0;
 const greetBtn = document.getElementById('greetingBtn');
