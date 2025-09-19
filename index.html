@@ -66,7 +66,6 @@
     0%,100% {transform: translateY(0);}
     50% {transform: translateY(-15px);}
   }
-
   h1 {
     color: white;
     text-align: center;
@@ -93,9 +92,9 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-15px); }
   }
-  #greetingBtn {
+  #greetingBtn, #nextWishBtn {
     display: block;
-    margin: 25px auto;
+    margin: 25px auto 10px auto;
     background: #ff5c7c;
     border: none;
     color: white;
@@ -108,44 +107,39 @@
     position: relative;
     z-index: 2;
   }
-  #greetingBtn:hover {
+  #greetingBtn:hover, #nextWishBtn:hover {
     background: #e74466;
   }
-  #wish-box {
-    max-width: 700px;
-    margin: 15px auto 50px;
-    padding: 30px 14px 24px 14px;
-    background: rgba(255, 92, 124,0.22);
-    border-radius: 30px;
-    box-shadow: 0 8px 24px rgba(255, 92, 124, 0.16);
-    text-align: center;
-    position: relative;
-    z-index: 2;
-    display: none;
-  }
   #greetingMsg {
+    max-width: 650px;
+    margin: 0 auto 32px auto;
     font-size: 1.4rem;
     color: white;
     text-align: center;
-    line-height: 1.6;
+    line-height: 2;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
-    min-height: 120px;
+    display: none;
+    padding-bottom: 17px;
+    position: relative;
+    z-index: 2;
   }
-  #nextWishBtn {
-    margin-top: 18px;
-    background: #ff5c7c;
-    border: none;
-    color: white;
-    padding: 12px 32px;
-    font-size: 1.15rem;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 4px 11px rgba(255, 92, 124, 0.3);
-    transition: background 0.25s;
-    display: inline-block;
+  #slideshow {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    z-index: 2;
   }
-  #nextWishBtn:hover {
-    background: #ff3a7e;
+  #slideshow img {
+    width: 100%;
+    height: auto;
+    display: none;
+    border-radius: 16px;
+  }
+  #slideshow img.active {
+    display: block;
   }
   #confetti-canvas {
     position: fixed;
@@ -156,6 +150,7 @@
     pointer-events: none;
     z-index: 0;
   }
+  /* Balloon styles */
   .balloon {
     position: fixed;
     bottom: -150px;
@@ -203,24 +198,16 @@
       margin: 15px auto;
       animation-duration: 3s;
     }
-    #greetingBtn {
+    #greetingBtn, #nextWishBtn {
       font-size: 1.2rem;
       padding: 12px 28px;
-      margin: 20px auto;
+      margin: 20px auto 10px auto;
       width: 80%;
     }
-    #wish-box {
-      font-size: 1.05rem;
-      max-width: 96vw;
-      padding: 18px 8px 15px 8px;
-    }
     #greetingMsg {
-      font-size: 1.1rem;
-      min-height: 80px;
-    }
-    #nextWishBtn {
-      font-size: 0.98rem;
-      padding: 9px 19px;
+      font-size: 1.2rem;
+      max-width: 90%;
+      margin: 10px auto 30px auto;
     }
     #slideshow {
       max-width: 90vw;
@@ -253,50 +240,52 @@
 <h1>🎉 Happy Birthday, Aarthi! 🎂</h1>
 <img src="assets/cake.png" alt="Cake" class="cake" />
 <button id="greetingBtn">Em Chusthunav Click Chey 😅</button>
-<div id="wish-box">
-  <div id="greetingMsg"></div>
-  <button id="nextWishBtn">Next ➡️</button>
+<div id="greetingMsg">
+  <div id="wishText"></div>
+  <button id="nextWishBtn" style="display:none;">Next ➡️</button>
 </div>
 <div id="slideshow"></div>
 <audio id="bg-music" src="assets/song.mp3" autoplay loop></audio>
 <script>
-// Wishes to show in sequence
+// Wishes section data and logic
 const wishes = [
-  `Happy Birthday Ra Kothi❤️🫂<br>My favorite person 🥰 .<br>Apudu ela Happy Ga Life ne Enjoy Chey.<br>Apudu A Help Kavali anna Nenu Okadine Unna Ani Gurtu Pettuko 😁.<br>#baa🫂<br>I Wish You All The Happiness In The World And May All Your Dreams Come True❤️🫂`,
-  `You always make everyone smile! Hope this birthday brings you even more joy and fun! 🎉<br><br>Never forget how special you are to your loved ones! 🌟`,
-  `May every moment of your birthday be filled with laughter, love, and unforgettable memories. 🍰🎈<br><br>Have a rocking year ahead!`,
-  `Wishing you good luck on all your dreams and that each new year opens more amazing doors for you. 🚀💖<br>Stay awesome, Aarthi!`
+  'Happy Birthday Ra Kothi❤️🫂<br>',
+  'My favorite person 🥰 .<br>',
+  'Apudu ela Happy Ga Life ne Enjoy Chey.<br>',
+  'Apudu A Help Kavali anna Nenu Okadine Unna Ani Gurtu Pettuko 😁 .<br>',
+  '#baa🫂<br>',
+  'I Wish You All The Happiness In The World And May All Your Dreams Come True❤️🫂'
 ];
 let currentWishIdx = 0;
-
 const greetBtn = document.getElementById('greetingBtn');
-const wishBox = document.getElementById('wish-box');
 const greetMsg = document.getElementById('greetingMsg');
+const wishText = document.getElementById('wishText');
 const nextWishBtn = document.getElementById('nextWishBtn');
-
-function showWish(idx) {
-  greetMsg.innerHTML = wishes[idx];
-}
-
-showWish(currentWishIdx);
-
 greetBtn.addEventListener('click', () => {
-  if (wishBox.style.display === 'none' || wishBox.style.display === '') {
-    wishBox.style.display = 'block';
+  if (greetMsg.style.display === 'none' || greetMsg.style.display === '') {
+    greetMsg.style.display = 'block';
     greetBtn.textContent = 'Hide Wishes';
+    currentWishIdx = 0;
     showWish(currentWishIdx);
   } else {
-    wishBox.style.display = 'none';
+    greetMsg.style.display = 'none';
     greetBtn.textContent = 'Em Chusthunav Click Chey 😅';
   }
 });
-
 nextWishBtn.addEventListener('click', () => {
-  currentWishIdx = (currentWishIdx + 1) % wishes.length;
+  currentWishIdx++;
   showWish(currentWishIdx);
 });
-
-// Photos slideshow
+function showWish(idx) {
+  wishText.innerHTML = wishes[idx];
+  // Only show next button if more wishes left
+  if(idx < wishes.length - 1) {
+    nextWishBtn.style.display = 'block';
+  } else {
+    nextWishBtn.style.display = 'none';
+  }
+}
+// Slideshow logic (auto slide)
 const photos = [
   'assets/photos/photo1.jpg',
   'assets/photos/photo2.jpg',
@@ -307,11 +296,10 @@ const photos = [
   'assets/photos/photo8.jpg',
   'assets/photos/photo9.jpg',
   'assets/photos/photo10.jpg',
-  'assets/photos/photo11.jpg',
+  'assets/photos/photo11.jpg'
 ];
 const slideshow = document.getElementById('slideshow');
 let currentPhotoIdx = 0;
-// Load photos into slideshow container
 photos.forEach( (src, i) => {
   const img = document.createElement('img');
   img.src = src;
@@ -332,7 +320,6 @@ setInterval(() => {
     showPhoto(currentPhotoIdx);
   }
 }, 3000);
-
 // Confetti blast background
 const confettiCanvas = document.getElementById('confetti-canvas');
 confettiCanvas.width = window.innerWidth;
