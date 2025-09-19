@@ -279,14 +279,15 @@
 <script>
 // Wishes section data and logic
 const wishes = [
-  `Click Chey Ante Click Chesthava 🤣 <br>
-Next Click Chai… Neku Okati Chepali 👉👈😅 <br>
-Nuvu Na Life lo Most Favorite and Important Person 🥰 <br>
-Apudu Ela Happy ga Life ni Enjoy Cheyali 🤩 <br>
-Apudu A Help Kavali Anna Nenu Okadni Unna Ani Gurtu Pettuko 😁 <br>
-Love You A Lot ❤️🫂 <br>
-Happy Birthday Ra Kothi ❤️🥳<br>
-I Wish You All The Happiness in the World and May All Your Dreams Come True ❤`
+  'Click Chey Ante Click Chesthava 🤣',
+  'Next Click Chai… Neku Okati Chepali 👉👈😅',
+  'Nuvu Na Life lo Most Favorite and Important Person 🥰',
+  'Apudu Ela Happy ga Life ni Enjoy Cheyali 🤩',
+  'Apudu A Help Kavali Anna Nenu Okadni Unna Ani Gurtu Pettuko 😁',
+  '😁',
+  'Love You A Lot ❤️🫂',
+  'Happy Birthday Ra Kothi ❤️🥳',
+  'I Wish You All The Happiness in the World and May All Your Dreams Come True ❤'
 ];
 let currentWishIdx = 0;
 const greetBtn = document.getElementById('greetingBtn');
@@ -317,6 +318,7 @@ function showWish(idx) {
     nextWishBtn.style.display = 'none';
   }
 }
+
 // Slideshow logic (auto slide)
 const photos = [
   'assets/photos/photo1.jpg',
@@ -352,6 +354,7 @@ setInterval(() => {
     showPhoto(currentPhotoIdx);
   }
 }, 3000);
+
 // Confetti blast background
 const confettiCanvas = document.getElementById('confetti-canvas');
 confettiCanvas.width = window.innerWidth;
