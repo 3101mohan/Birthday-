@@ -257,7 +257,6 @@
 <div class="party-hat h1"></div><div class="party-hat h2"></div>
 <div class="candle c1"></div><div class="candle c2"></div>
 <div class="popper p1"></div><div class="popper p2"></div>
-
 <!-- Confetti Blast Background Canvas -->
 <canvas id="confetti-canvas"></canvas>
 <!-- Balloons -->
@@ -285,7 +284,7 @@ const wishes = [
   'Apudu Ela Happy ga Life ni Enjoy Cheyali 🤩',
   'Apudu A Help Kavali Anna Nenu Okadni Unna Ani Gurtu Pettuko 😁',
   'Love You A Lot ❤️🫂',
-  'Happy Birthday Ra Kothi ❤️🥳'
+  'Happy Birthday Ra Kothi ❤️🥳',
   'I Wish You All The Happiness in the World and May All Your Dreams Come True ❤'
 ];
 let currentWishIdx = 0;
@@ -310,14 +309,12 @@ nextWishBtn.addEventListener('click', () => {
 });
 function showWish(idx) {
   wishText.innerHTML = wishes[idx];
-  // Only show next button if more wishes left
   if(idx < wishes.length - 1) {
     nextWishBtn.style.display = 'block';
   } else {
     nextWishBtn.style.display = 'none';
   }
 }
-
 // Slideshow logic (auto slide)
 const photos = [
   'assets/photos/photo1.jpg',
@@ -353,7 +350,6 @@ setInterval(() => {
     showPhoto(currentPhotoIdx);
   }
 }, 3000);
-
 // Confetti blast background
 const confettiCanvas = document.getElementById('confetti-canvas');
 confettiCanvas.width = window.innerWidth;
@@ -377,7 +373,6 @@ function launchConfetti() {
   document.body.appendChild(script);
 }
 launchConfetti();
-// Background music volume softened
 const bgMusic = document.getElementById('bg-music');
 bgMusic.volume = 0.3;
 </script>
