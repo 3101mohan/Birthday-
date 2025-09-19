@@ -1,378 +1,578 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Happy Birthday Aarthi 🎉🎈🎂</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
-  body {
-    margin: 0;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    font-family: 'Comic Neue', cursive, sans-serif;
-    overflow-x: hidden;
-    position: relative;
-    min-height: 100vh;
-  }
-  /* Birthday themed background decorations */
-  .star, .gift, .party-hat, .candle, .popper {
-    position: absolute;
-    z-index: 0;
-    opacity: 0.82;
-    pointer-events: none;
-    animation-timing-function: linear;
-  }
-  .star {
-    width: 38px;
-    height: 38px;
-    background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/2b50.png') no-repeat center/contain;
-    animation: twinkle 4s infinite;
-  }
-  .star.s1 { left: 4vw; top: 12vh; animation-delay: 0s;}
-  .star.s2 { right: 12vw; top: 6vh; animation-delay: 1s;}
-  .star.s3 { left: 50vw; top: 1vh; animation-delay: 2.2s;}
-  .star.s4 { right: 6vw; top: 20vh; animation-delay: 1.4s;}
-  .star.s5 { left: 3vw; bottom: 10vh; animation-delay: 2.8s;}
-  .star.s6 { right: 18vw; bottom: 7vh; animation-delay: 0.3s;}
-  @keyframes twinkle {
-    0%,100% { opacity: 0.68;}
-    50% { opacity: 1;}
-  }
-  .gift {
-    width: 50px;
-    height: 50px;
-    background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f381.png') no-repeat center/contain;
-    animation: floatGift 13s infinite alternate;
-  }
-  .gift.g1 { left: 6vw; bottom: 5vh;}
-  .gift.g2 { right: 9vw; bottom: 15vh; animation-delay: 2s;}
-  .gift.g3 { left: 25vw; top: 27vh; animation-delay: 5s;}
-  .gift.g4 { right: 44vw; top: 30vh; animation-delay: 4.5s;}
-  @keyframes floatGift {
-    0% {transform: translateY(0px) rotate(-7deg);}
-    50% {transform: translateY(-40px) rotate(7deg);}
-    100% {transform: translateY(0px) rotate(-7deg);}
-  }
-  .party-hat {
-    width: 48px;
-    height: 48px;
-    background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f389.png') no-repeat center/contain;
-    opacity: 0.88;
-    animation: bounceHat 4s infinite;
-  }
-  .party-hat.h1 { left: 10vw; top: 63vh; animation-delay: 1s;}
-  .party-hat.h2 { right: 14vw; top: 69vh; animation-delay: 0.5s;}
-  @keyframes bounceHat {
-    0%,100% {transform: translateY(0);}
-    50% {transform: translateY(-15px);}
-  }
-  /* New candle emoji */
-  .candle {
-    width: 36px;
-    height: 36px;
-    background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f56f.png') no-repeat center/contain;
-    animation: floatCandle 12s infinite alternate;
-  }
-  .candle.c1 { left: 30vw; top: 12vh; animation-delay: 0s;}
-  .candle.c2 { right: 22vw; top: 15vh; animation-delay: 3s;}
-  @keyframes floatCandle {
-    0% {transform: translateY(0px) rotate(3deg);}
-    50% {transform: translateY(-35px) rotate(-3deg);}
-    100% {transform: translateY(0px) rotate(3deg);}
-  }
-  /* New party popper emoji */
-  .popper {
-    width: 40px;
-    height: 40px;
-    background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f389.png') no-repeat center/contain;
-    animation: bouncePopper 4s infinite;
-  }
-  .popper.p1 { left: 18vw; top: 40vh; animation-delay: 1s;}
-  .popper.p2 { right: 30vw; top: 38vh; animation-delay: 1.5s;}
-  @keyframes bouncePopper {
-    0%,100% {transform: translateY(0);}
-    50% {transform: translateY(-12px);}
-  }
-  h1 {
-    color: white;
-    text-align: center;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-    font-size: 3.8rem;
-    margin-top: 50px;
-    animation: bounce 2s infinite;
-    position: relative;
-    z-index: 2;
-  }
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-  }
-  .cake {
-    display: block;
-    margin: 20px auto;
-    width: 220px;
-    animation: float 4s ease-in-out infinite;
-    position: relative;
-    z-index: 2;
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-  }
-  #greetingBtn, #nextWishBtn {
-    display: block;
-    margin: 25px auto 10px auto;
-    background: #ff5c7c;
-    border: none;
-    color: white;
-    padding: 14px 38px;
-    font-size: 1.4rem;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 6px 12px rgba(255, 92, 124, 0.7);
-    transition: background 0.3s ease;
-    position: relative;
-    z-index: 2;
-  }
-  #greetingBtn:hover, #nextWishBtn:hover {
-    background: #e74466;
-  }
-  #greetingMsg {
-    max-width: 650px;
-    margin: 0 auto 32px auto;
-    font-size: 1.4rem;
-    color: white;
-    text-align: center;
-    line-height: 2;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
-    display: none;
-    padding-bottom: 17px;
-    position: relative;
-    z-index: 2;
-  }
-  #slideshow {
-    max-width: 600px;
-    margin: 0 auto 30px;
-    position: relative;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-    z-index: 2;
-  }
-  #slideshow img {
-    width: 100%;
-    height: auto;
-    display: none;
-    border-radius: 16px;
-  }
-  #slideshow img.active {
-    display: block;
-  }
-  #confetti-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-  }
-  /* Balloon styles */
-  .balloon {
-    position: fixed;
-    bottom: -150px;
-    width: 50px;
-    height: 70px;
-    background-color: #ff477e;
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    opacity: 0.9;
-    animation-timing-function: ease-in-out;
-    z-index: 1;
-  }
-  .balloon:before {
-    content: '';
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    width: 4px;
-    height: 12px;
-    background: #333;
-    transform: translateX(-50%);
-    border-radius: 2px;
-  }
-  .balloon.color1 { background-color: #ff477e; }
-  .balloon.color2 { background-color: #ff85a1; }
-  .balloon.color3 { background-color: #ffafcc; }
-  .balloon.color4 { background-color: #f9bec7; }
-  .balloon.color5 { background-color: #ff0a54; }
-  @keyframes floatUp {
-    0% {
-      transform: translateY(0) translateX(0);
-      opacity: 0.9;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday Aarthi 🎉🎈🎂</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Comic Neue', cursive, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
     }
-    100% {
-      transform: translateY(-120vh) translateX(10px);
-      opacity: 0;
+
+    /* Birthday themed background decorations */
+    .star,
+    .gift,
+    .party-hat,
+    .candle,
+    .popper {
+      position: absolute;
+      z-index: 0;
+      opacity: 0.82;
+      pointer-events: none;
+      animation-timing-function: linear;
     }
-  }
-  @media only screen and (max-width: 600px) {
+
+    .star {
+      width: 38px;
+      height: 38px;
+      background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/2b50.png') no-repeat center/contain;
+      animation: twinkle 4s infinite;
+    }
+
+    .star.s1 {
+      left: 4vw;
+      top: 12vh;
+      animation-delay: 0s;
+    }
+
+    .star.s2 {
+      right: 12vw;
+      top: 6vh;
+      animation-delay: 1s;
+    }
+
+    .star.s3 {
+      left: 50vw;
+      top: 1vh;
+      animation-delay: 2.2s;
+    }
+
+    .star.s4 {
+      right: 6vw;
+      top: 20vh;
+      animation-delay: 1.4s;
+    }
+
+    .star.s5 {
+      left: 3vw;
+      bottom: 10vh;
+      animation-delay: 2.8s;
+    }
+
+    .star.s6 {
+      right: 18vw;
+      bottom: 7vh;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes twinkle {
+      0%,
+      100% {
+        opacity: 0.68;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    .gift {
+      width: 50px;
+      height: 50px;
+      background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f381.png') no-repeat center/contain;
+      animation: floatGift 13s infinite alternate;
+    }
+
+    .gift.g1 {
+      left: 6vw;
+      bottom: 5vh;
+    }
+
+    .gift.g2 {
+      right: 9vw;
+      bottom: 15vh;
+      animation-delay: 2s;
+    }
+
+    .gift.g3 {
+      left: 25vw;
+      top: 27vh;
+      animation-delay: 5s;
+    }
+
+    .gift.g4 {
+      right: 44vw;
+      top: 30vh;
+      animation-delay: 4.5s;
+    }
+
+    @keyframes floatGift {
+      0% {
+        transform: translateY(0px) rotate(-7deg);
+      }
+
+      50% {
+        transform: translateY(-40px) rotate(7deg);
+      }
+
+      100% {
+        transform: translateY(0px) rotate(-7deg);
+      }
+    }
+
+    .party-hat {
+      width: 48px;
+      height: 48px;
+      background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f389.png') no-repeat center/contain;
+      opacity: 0.88;
+      animation: bounceHat 4s infinite;
+    }
+
+    .party-hat.h1 {
+      left: 10vw;
+      top: 63vh;
+      animation-delay: 1s;
+    }
+
+    .party-hat.h2 {
+      right: 14vw;
+      top: 69vh;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes bounceHat {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    /* New candle emoji */
+    .candle {
+      width: 36px;
+      height: 36px;
+      background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f56f.png') no-repeat center/contain;
+      animation: floatCandle 12s infinite alternate;
+    }
+
+    .candle.c1 {
+      left: 30vw;
+      top: 12vh;
+      animation-delay: 0s;
+    }
+
+    .candle.c2 {
+      right: 22vw;
+      top: 15vh;
+      animation-delay: 3s;
+    }
+
+    @keyframes floatCandle {
+      0% {
+        transform: translateY(0px) rotate(3deg);
+      }
+
+      50% {
+        transform: translateY(-35px) rotate(-3deg);
+      }
+
+      100% {
+        transform: translateY(0px) rotate(3deg);
+      }
+    }
+
+    /* New party popper emoji */
+    .popper {
+      width: 40px;
+      height: 40px;
+      background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f389.png') no-repeat center/contain;
+      animation: bouncePopper 4s infinite;
+    }
+
+    .popper.p1 {
+      left: 18vw;
+      top: 40vh;
+      animation-delay: 1s;
+    }
+
+    .popper.p2 {
+      right: 30vw;
+      top: 38vh;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes bouncePopper {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
     h1 {
-      font-size: 2.8rem;
-      margin-top: 30px;
+      color: white;
+      text-align: center;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+      font-size: 3.8rem;
+      margin-top: 50px;
+      animation: bounce 2s infinite;
+      position: relative;
+      z-index: 2;
     }
+
+    @keyframes bounce {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
     .cake {
-      width: 160px;
-      margin: 15px auto;
-      animation-duration: 3s;
+      display: block;
+      margin: 20px auto;
+      width: 220px;
+      animation: float 4s ease-in-out infinite;
+      position: relative;
+      z-index: 2;
     }
-    #greetingBtn, #nextWishBtn {
-      font-size: 1.2rem;
-      padding: 12px 28px;
-      margin: 20px auto 10px auto;
-      width: 80%;
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
     }
+
+    #greetingBtn,
+    #nextWishBtn {
+      display: block;
+      margin: 25px auto 10px auto;
+      background: #ff5c7c;
+      border: none;
+      color: white;
+      padding: 14px 38px;
+      font-size: 1.4rem;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(255, 92, 124, 0.7);
+      transition: background 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    #greetingBtn:hover,
+    #nextWishBtn:hover {
+      background: #e74466;
+    }
+
     #greetingMsg {
-      font-size: 1.2rem;
-      max-width: 90%;
-      margin: 10px auto 30px auto;
+      max-width: 650px;
+      margin: 0 auto 32px auto;
+      font-size: 1.4rem;
+      color: white;
+      text-align: center;
+      line-height: 2;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+      display: none;
+      padding-bottom: 17px;
+      position: relative;
+      z-index: 2;
     }
+
     #slideshow {
-      max-width: 90vw;
-      margin: 20px auto 30px;
-      border-radius: 12px;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+      z-index: 2;
     }
+
     #slideshow img {
-      border-radius: 12px;
+      width: 100%;
+      height: auto;
+      display: none;
+      border-radius: 16px;
     }
-  }
-</style>
+
+    #slideshow img.active {
+      display: block;
+    }
+
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Balloon styles */
+    .balloon {
+      position: fixed;
+      bottom: -150px;
+      width: 50px;
+      height: 70px;
+      background-color: #ff477e;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      opacity: 0.9;
+      animation-timing-function: ease-in-out;
+      z-index: 1;
+    }
+
+    .balloon:before {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      width: 4px;
+      height: 12px;
+      background: #333;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .balloon.color1 {
+      background-color: #ff477e;
+    }
+
+    .balloon.color2 {
+      background-color: #ff85a1;
+    }
+
+    .balloon.color3 {
+      background-color: #ffafcc;
+    }
+
+    .balloon.color4 {
+      background-color: #f9bec7;
+    }
+
+    .balloon.color5 {
+      background-color: #ff0a54;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.9;
+      }
+
+      100% {
+        transform: translateY(-120vh) translateX(10px);
+        opacity: 0;
+      }
+    }
+
+    @media only screen and (max-width: 600px) {
+      h1 {
+        font-size: 2.8rem;
+        margin-top: 30px;
+      }
+
+      .cake {
+        width: 160px;
+        margin: 15px auto;
+        animation-duration: 3s;
+      }
+
+      #greetingBtn,
+      #nextWishBtn {
+        font-size: 1.2rem;
+        padding: 12px 28px;
+        margin: 20px auto 10px auto;
+        width: 80%;
+      }
+
+      #greetingMsg {
+        font-size: 1.2rem;
+        max-width: 90%;
+        margin: 10px auto 30px auto;
+      }
+
+      #slideshow {
+        max-width: 90vw;
+        margin: 20px auto 30px;
+        border-radius: 12px;
+      }
+
+      #slideshow img {
+        border-radius: 12px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<!-- Birthday background graphics -->
-<div class="star s1"></div><div class="star s2"></div>
-<div class="star s3"></div><div class="star s4"></div>
-<div class="star s5"></div><div class="star s6"></div>
-<div class="gift g1"></div><div class="gift g2"></div>
-<div class="gift g3"></div><div class="gift g4"></div>
-<div class="party-hat h1"></div><div class="party-hat h2"></div>
-<div class="candle c1"></div><div class="candle c2"></div>
-<div class="popper p1"></div><div class="popper p2"></div>
-<!-- Confetti Blast Background Canvas -->
-<canvas id="confetti-canvas"></canvas>
-<!-- Balloons -->
-<div class="balloon color1" style="left: 5%; animation: floatUp 8s infinite;"></div>
-<div class="balloon color2" style="left: 15%; animation: floatUp 10s 2s infinite;"></div>
-<div class="balloon color3" style="left: 25%; animation: floatUp 7s 1s infinite;"></div>
-<div class="balloon color4" style="left: 40%; animation: floatUp 9s 0.5s infinite;"></div>
-<div class="balloon color5" style="left: 60%; animation: floatUp 11s 1.5s infinite;"></div>
-<div class="balloon color1" style="left: 75%; animation: floatUp 8s 3s infinite;"></div>
-<h1>🎉 Happy Birthday, Aarthi! 🎂</h1>
-<img src="assets/cake.png" alt="Cake" class="cake" />
-<button id="greetingBtn">Em Chusthunav Click Chey 😅</button>
-<div id="greetingMsg">
-  <div id="wishText"></div>
-  <button id="nextWishBtn" style="display:none;">Next ➡️</button>
-</div>
-<div id="slideshow"></div>
-<audio id="bg-music" src="assets/song.mp3" autoplay loop></audio>
-<script>
-// Wishes section data and logic
-const wishes = [
-  'Click Chey Ante Click Chesthava 🤣',
-  'Next Click Chai… Neku Okati Chepali 👉👈😅',
-  'Nuvu Na Life lo Most Favorite and Important Person 🥰',
-  'Apudu Ela Happy ga Life ni Enjoy Cheyali 🤩',
-  'Apudu A Help Kavali Anna Nenu Okadni Unna Ani Gurtu Pettuko 😁',
-  'Love You A Lot ❤️🫂',
-  'Happy Birthday Ra Kothi ❤️🥳',
-  'I Wish You All The Happiness in the World and May All Your Dreams Come True ❤'
-];
-let currentWishIdx = 0;
-const greetBtn = document.getElementById('greetingBtn');
-const greetMsg = document.getElementById('greetingMsg');
-const wishText = document.getElementById('wishText');
-const nextWishBtn = document.getElementById('nextWishBtn');
-greetBtn.addEventListener('click', () => {
-  if (greetMsg.style.display === 'none' || greetMsg.style.display === '') {
-    greetMsg.style.display = 'block';
-    greetBtn.textContent = 'Hide Wishes';
-    currentWishIdx = 0;
-    showWish(currentWishIdx);
-  } else {
-    greetMsg.style.display = 'none';
-    greetBtn.textContent = 'Em Chusthunav Click Chey 😅';
-  }
-});
-nextWishBtn.addEventListener('click', () => {
-  currentWishIdx++;
-  showWish(currentWishIdx);
-});
-function showWish(idx) {
-  wishText.innerHTML = wishes[idx];
-  if(idx < wishes.length - 1) {
-    nextWishBtn.style.display = 'block';
-  } else {
-    nextWishBtn.style.display = 'none';
-  }
-}
-// Slideshow logic (auto slide)
-const photos = [
-  'assets/photos/photo1.jpg',
-  'assets/photos/photo2.jpg',
-  'assets/photos/photo3.jpg',
-  'assets/photos/photo4.jpg',
-  'assets/photos/photo9.jpg'
-  'assets/photos/photo5.jpg',
-  'assets/photos/photo10.jpg',
-  'assets/photos/photo11.jpg'
-];
-const slideshow = document.getElementById('slideshow');
-let currentPhotoIdx = 0;
-photos.forEach( (src, i) => {
-  const img = document.createElement('img');
-  img.src = src;
-  if(i === 0) img.classList.add('active');
-  slideshow.appendChild(img);
-});
-const images = slideshow.getElementsByTagName('img');
-const totalImages = images.length;
-function showPhoto(index) {
-  for(let img of images) {
-    img.classList.remove('active');
-  }
-  images[index].classList.add('active');
-}
-setInterval(() => {
-  if(totalImages > 0) {
-    currentPhotoIdx = (currentPhotoIdx + 1) % totalImages;
-    showPhoto(currentPhotoIdx);
-  }
-}, 3000);
-// Confetti blast background
-const confettiCanvas = document.getElementById('confetti-canvas');
-confettiCanvas.width = window.innerWidth;
-confettiCanvas.height = window.innerHeight;
-function launchConfetti() {
-  const script = document.createElement('script');
-  script.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js";
-  script.onload = () => {
-    const confetti = window.confetti.create(confettiCanvas, {
-      resize: true, useWorker: true, zIndex: 0
+  <!-- Birthday background graphics -->
+  <div class="star s1"></div>
+  <div class="star s2"></div>
+  <div class="star s3"></div>
+  <div class="star s4"></div>
+  <div class="star s5"></div>
+  <div class="star s6"></div>
+  <div class="gift g1"></div>
+  <div class="gift g2"></div>
+  <div class="gift g3"></div>
+  <div class="gift g4"></div>
+  <div class="party-hat h1"></div>
+  <div class="party-hat h2"></div>
+  <div class="candle c1"></div>
+  <div class="candle c2"></div>
+  <div class="popper p1"></div>
+  <div class="popper p2"></div>
+  <!-- Confetti Blast Background Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+  <!-- Balloons -->
+  <div class="balloon color1" style="left: 5%; animation: floatUp 8s infinite;"></div>
+  <div class="balloon color2" style="left: 15%; animation: floatUp 10s 2s infinite;"></div>
+  <div class="balloon color3" style="left: 25%; animation: floatUp 7s 1s infinite;"></div>
+  <div class="balloon color4" style="left: 40%; animation: floatUp 9s 0.5s infinite;"></div>
+  <div class="balloon color5" style="left: 60%; animation: floatUp 11s 1.5s infinite;"></div>
+  <div class="balloon color1" style="left: 75%; animation: floatUp 8s 3s infinite;"></div>
+  <h1>🎉 Happy Birthday, Aarthi! 🎂</h1>
+  <img src="assets/cake.png" alt="Cake" class="cake" />
+  <button id="greetingBtn">Em Chusthunav Click Chey 😅</button>
+  <div id="greetingMsg">
+    <div id="wishText"></div>
+    <button id="nextWishBtn" style="display:none;">Next ➡️</button>
+  </div>
+  <div id="slideshow"></div>
+  <audio id="bg-music" src="assets/song.mp3" autoplay loop></audio>
+  <script>
+    // Wishes section data and logic
+    const wishes = [
+      'Click Chey Ante Click Chesthava 🤣',
+      'Next Click Chai… Neku Okati Chepali 👉👈😅',
+      'Nuvu Na Life lo Most Favorite and Important Person 🥰',
+      'Apudu Ela Happy ga Life ni Enjoy Cheyali 🤩',
+      'Apudu A Help Kavali Anna Nenu Okadni Unna Ani Gurtu Pettuko 😁',
+      'Love You A Lot ❤️🫂',
+      'Happy Birthday Ra Kothi ❤️🥳',
+      'I Wish You All The Happiness in the World and May All Your Dreams Come True ❤'
+    ];
+    let currentWishIdx = 0;
+    const greetBtn = document.getElementById('greetingBtn');
+    const greetMsg = document.getElementById('greetingMsg');
+    const wishText = document.getElementById('wishText');
+    const nextWishBtn = document.getElementById('nextWishBtn');
+    greetBtn.addEventListener('click', () => {
+      if (greetMsg.style.display === 'none' || greetMsg.style.display === '') {
+        greetMsg.style.display = 'block';
+        greetBtn.textContent = 'Hide Wishes';
+        currentWishIdx = 0;
+        showWish(currentWishIdx);
+      } else {
+        greetMsg.style.display = 'none';
+        greetBtn.textContent = 'Em Chusthunav Click Chey 😅';
+      }
     });
+    nextWishBtn.addEventListener('click', () => {
+      currentWishIdx++;
+      showWish(currentWishIdx);
+    });
+    function showWish(idx) {
+      wishText.innerHTML = wishes[idx];
+      if (idx < wishes.length - 1) {
+        nextWishBtn.style.display = 'block';
+      } else {
+        nextWishBtn.style.display = 'none';
+      }
+    }
+
+    // Slideshow logic (auto slide)
+    const photos = [
+      'assets/photos/photo1.jpg',
+      'assets/photos/photo2.jpg',
+      'assets/photos/photo3.jpg',
+      'assets/photos/photo4.jpg',
+      'assets/photos/photo6.jpg',
+      'assets/photos/photo9.jpg',
+      'assets/photos/photo10.jpg',
+      'assets/photos/photo11.jpg'
+    ];
+    const slideshow = document.getElementById('slideshow');
+    let currentPhotoIdx = 0;
+    photos.forEach((src, i) => {
+      const img = document.createElement('img');
+      img.src = src;
+      if (i === 0) img.classList.add('active');
+      slideshow.appendChild(img);
+    });
+    const images = slideshow.getElementsByTagName('img');
+    const totalImages = images.length;
+    function showPhoto(index) {
+      for (let img of images) {
+        img.classList.remove('active');
+      }
+      images[index].classList.add('active');
+    }
     setInterval(() => {
-      confetti({
-        particleCount: 50,
-        spread: 100,
-        origin: { y: Math.random() * 0.5 },
-        colors: ['#ff0a54', '#ff477e', '#ff85a1', '#fbb1b1', '#f9bec7']
-      });
-    }, 300);
-  };
-  document.body.appendChild(script);
-}
-launchConfetti();
-const bgMusic = document.getElementById('bg-music');
-bgMusic.volume = 0.3;
-</script>
+      if (totalImages > 0) {
+        currentPhotoIdx = (currentPhotoIdx + 1) % totalImages;
+        showPhoto(currentPhotoIdx);
+      }
+    }, 3000);
+
+    // Confetti blast background
+    const confettiCanvas = document.getElementById('confetti-canvas');
+    confettiCanvas.width = window.innerWidth;
+    confettiCanvas.height = window.innerHeight;
+
+    function launchConfetti() {
+      const script = document.createElement('script');
+      script.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js";
+      script.onload = () => {
+        const confetti = window.confetti.create(confettiCanvas, {
+          resize: true,
+          useWorker: true,
+          zIndex: 0
+        });
+        setInterval(() => {
+          confetti({
+            particleCount: 50,
+            spread: 100,
+            origin: {
+              y: Math.random() * 0.5
+            },
+            colors: ['#ff0a54', '#ff477e', '#ff85a1', '#fbb1b1', '#f9bec7']
+          });
+        }, 300);
+      };
+      document.body.appendChild(script);
+    }
+    launchConfetti();
+
+    // Background music volume softened
+    const bgMusic = document.getElementById('bg-music');
+    bgMusic.volume = 0.3;
+  </script>
 </body>
+
 </html>
